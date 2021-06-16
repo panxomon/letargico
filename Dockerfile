@@ -10,8 +10,8 @@
 
 FROM heroku/heroku:18-build as build
 
-COPY . /letargico
-WORKDIR /letargico
+COPY . /app
+WORKDIR /app
 
 # Setup buildpack
 RUN mkdir -p /tmp/buildpack/heroku/go /tmp/build_cache /tmp/env
@@ -24,8 +24,8 @@ RUN STACK=heroku-18 /tmp/buildpack/heroku/go/bin/compile /letargico /tmp/build_c
 FROM heroku/heroku:18
 
 COPY --from=build /letargico /letargico
-ENV HOME /letargico
-WORKDIR /letargico
+ENV HOME /app
+WORKDIR /app
 RUN useradd -m heroku
 USER heroku
 CMD /app/bin/letargico

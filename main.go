@@ -9,7 +9,9 @@ import (
 
 // Hello World API
 func main() {
+
 	port := os.Getenv("PORT")
+
 	if port == "" {
 		port = "3001" //localhost
 	}
@@ -18,7 +20,7 @@ func main() {
 		io.WriteString(w, "Hello, World!")
 	}
 
-	http.HandleFunc("/hello", helloHandler)
+	http.HandleFunc("/", helloHandler)
 
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
