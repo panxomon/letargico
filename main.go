@@ -17,7 +17,7 @@ func main() {
 	}
 
 	helloHandler := func(w http.ResponseWriter, r *http.Request) {
-		io.WriteString(w, "Hello, World!")
+		io.WriteString(w, "lucho sapbe ingles")
 	}
 
 	http.HandleFunc("/home", helloHandler)
