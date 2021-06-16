@@ -20,7 +20,7 @@ func main() {
 		io.WriteString(w, "Hello, World!")
 	}
 
-	http.HandleFunc("/", helloHandler)
+	http.HandleFunc("/home", helloHandler)
 
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
