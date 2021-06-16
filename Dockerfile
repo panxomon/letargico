@@ -10,22 +10,22 @@
 
 FROM heroku/heroku:18-build as build
 
-COPY . /app
-WORKDIR /app
+COPY . /letargico
+WORKDIR /letargico
 
 # Setup buildpack
 RUN mkdir -p /tmp/buildpack/heroku/go /tmp/build_cache /tmp/env
 RUN curl https://codon-buildpacks.s3.amazonaws.com/buildpacks/heroku/go.tgz | tar xz -C /tmp/buildpack/heroku/go
 
 #Execute Buildpack
-RUN STACK=heroku-18 /tmp/buildpack/heroku/go/bin/compile /app /tmp/build_cache /tmp/env
+RUN STACK=heroku-18 /tmp/buildpack/heroku/go/bin/compile /letargico /tmp/build_cache /tmp/env
 
 # Prepare final, minimal image
 FROM heroku/heroku:18
 
-COPY --from=build /app /app
-ENV HOME /app
-WORKDIR /app
+COPY --from=build /letargico /letargico
+ENV HOME /letargico
+WORKDIR /letargico
 RUN useradd -m heroku
 USER heroku
-CMD /app/bin/go-getting-started
+CMD /app/bin/letargico
