@@ -7,7 +7,7 @@ import (
 
 	about "github.com/panxomon/letargico/about/domain"
 	infrastructure "github.com/panxomon/letargico/about/infrastructure"
-	server "github.com/panxomon/letargico/infraestructure"
+	server "github.com/panxomon/letargico/infrastructure"
 )
 
 const defaultPort = "3001"

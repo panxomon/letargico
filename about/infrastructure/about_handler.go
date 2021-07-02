@@ -1,11 +1,11 @@
 package infrastructure
 
-import "github.com/panxomon/letargico/about/domain"
+import "letargico/about/domain"
 
 type handler struct {
-	aboutService domain.Service
+	aboutService domain.AboutGateway
 }
 
-func NewAboutHandler(aboutService domain.Service) AboutHandler {
+func NewAboutHandler(aboutService domain.AboutGateway) AboutHandler {
 	return &handler{aboutService: aboutService}
 }

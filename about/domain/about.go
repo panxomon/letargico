@@ -1,13 +1,13 @@
-package about
+package domain
 
 type About struct {
 	Message string `json:"message"`
 }
 
 type service struct {
-	aboutrepo Repository
+	aboutrepo AboutRepository
 }
 
-type Repository interface {
+type AboutRepository interface {
 	Find() (*About, error)
 }

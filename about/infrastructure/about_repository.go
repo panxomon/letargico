@@ -2,15 +2,14 @@ package infrastructure
 
 import (
 	"io/ioutil"
-
-	"github.com/panxomon/letargico/about/domain"
+	"letargico/about/domain"
 )
 
 type fileRepository struct {
 	file string
 }
 
-func NewDirRepository() (domain.Repository, error) {
+func NewDirRepository() (domain.AboutRepository, error) {
 
 	repo := &fileRepository{file: "files/about.md"}
 

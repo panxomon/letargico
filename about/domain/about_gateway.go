@@ -1,11 +1,11 @@
-package about
-
-func NewAboutService(aboutrepo Repository) AboutGateway {
-	return &service{aboutrepo: aboutrepo}
-}
+package domain
 
 type AboutGateway interface {
 	Find() (*About, error)
+}
+
+func NewAboutService(aboutrepo AboutRepository) AboutGateway {
+	return &service{aboutrepo: aboutrepo}
 }
 
 func (s *service) Find() (*About, error) {
