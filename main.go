@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/panxomon/letargico/about/domain"
-	"github.com/panxomon/letargico/about/infraestructure"
+	about "github.com/panxomon/letargico/about/domain"
+	infrastructure "github.com/panxomon/letargico/about/infrastructure"
 	server "github.com/panxomon/letargico/infraestructure"
 )
 
@@ -18,9 +18,9 @@ func main() {
 		port = defaultPort
 	}
 
-	repo, _ := infraestructure.NewDirRepository()
-	service := domain.NewAboutService(repo)
-	aboutHandler := infraestructure.NewAboutHandler(service)
+	repo, _ := infrastructure.NewDirRepository()
+	service := about.NewAboutService(repo)
+	aboutHandler := infrastructure.NewAboutHandler(service)
 
 	http.HandleFunc("/home", HelloLucho)
 	http.HandleFunc("/about", aboutHandler.Get)
