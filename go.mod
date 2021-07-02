@@ -1,3 +1,3 @@
-module github.com/panxomon/letargico
+module letargico
 
 go 1.16
