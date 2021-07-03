@@ -2,12 +2,12 @@ package main
 
 import (
 	"io"
+	"letargico/about/domain"
+	"letargico/about/infrastructure"
 	"net/http"
 	"os"
 
-	about "github.com/panxomon/letargico/about/domain"
-	infrastructure "github.com/panxomon/letargico/about/infrastructure"
-	server "github.com/panxomon/letargico/infrastructure"
+	server "letargico/infrastructure"
 )
 
 const defaultPort = "3001"
@@ -19,14 +19,13 @@ func main() {
 	}
 
 	repo, _ := infrastructure.NewDirRepository()
-	service := about.NewAboutService(repo)
+	service := domain.NewAboutService(repo)
 	aboutHandler := infrastructure.NewAboutHandler(service)
 
 	http.HandleFunc("/home", HelloLucho)
 	http.HandleFunc("/about", aboutHandler.Get)
 
 	server.Start(port)
-
 }
 
 func HelloLucho(w http.ResponseWriter, r *http.Request) {
